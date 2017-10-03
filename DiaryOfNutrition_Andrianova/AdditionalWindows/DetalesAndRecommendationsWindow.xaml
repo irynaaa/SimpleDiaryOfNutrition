@@ -92,7 +92,7 @@
         </ListBox>
         <Button x:Name="buttonChangeUserData"  HorizontalAlignment="Left" BorderThickness="0" Margin="466,0,0,0" VerticalAlignment="Top" Width="32" Height="32" Click="buttonChangeUserData_Click" Background="{x:Null}">
             <StackPanel Orientation="Horizontal">
-                <Image Source="update_userdata_btn.png" Width="28" Height="28" />
+                <Image Source="/pictures/update_userdata_btn.png" Width="28" Height="28" />
             </StackPanel>
         </Button>
         <GroupBox x:Name="groupBox" Header="Ваш пол:" HorizontalAlignment="Left" Margin="101,3,0,0" VerticalAlignment="Top" Height="77" Width="135" FontFamily="Segoe Print" FontWeight="Bold" Foreground="DarkRed"/>

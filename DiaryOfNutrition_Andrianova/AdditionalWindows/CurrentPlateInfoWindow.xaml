@@ -24,7 +24,7 @@
         <StackPanel>
             <Button x:Name="removeDish_btn" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Width="151" Background="{x:Null}" BorderThickness="0" Click="removeDish_btn_Click">
             <StackPanel Orientation="Horizontal">
-                    <Image Source="remove_foodinplate_btn.png" />
+                    <Image Source="/pictures/remove_foodinplate_btn.png" />
             </StackPanel>
             </Button>
             <DataGrid x:Name="dataGridCurrentPlate" IsReadOnly="True" AutoGenerateColumns="False" Width="700"  Height="500" AlternationCount="2" AlternatingRowBackground="Bisque" ItemsSource="{Binding}">

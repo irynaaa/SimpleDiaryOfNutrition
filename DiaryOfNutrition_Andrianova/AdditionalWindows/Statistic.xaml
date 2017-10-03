@@ -42,7 +42,7 @@
     </Window.Resources>
     <StackPanel Margin="-4,0,-4,-113">
         <StackPanel.Background>
-            <ImageBrush ImageSource="bg.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/pictures/bg.jpg" Stretch="UniformToFill"/>
         </StackPanel.Background>
         <Grid Margin="0 20 0 0" Height="420" >
             <Grid.RowDefinitions>
