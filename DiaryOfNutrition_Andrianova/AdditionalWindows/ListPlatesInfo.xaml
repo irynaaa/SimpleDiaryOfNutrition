@@ -23,7 +23,13 @@
     </Window.Resources>
     <Grid>
         <StackPanel x:Name="lbStackPanelDishInfo">
-            <ComboBox x:Name="comboBoxMonth" Width="200" Margin="5" IsReadOnly="True" SelectionChanged="comboBoxMonth_SelectionChanged" >
+            <ComboBox x:Name="comboBoxMonth" Width="200" Height="30" Margin="5" IsReadOnly="True" SelectionChanged="comboBoxMonth_SelectionChanged" FontSize="14" Foreground="#FF0F0763" FontFamily="Segoe Print" FontWeight="Bold" >
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="Bisque" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
                 <ComboBoxItem Content="Январь"/>
                 <ComboBoxItem Content="Февраль"/>
                 <ComboBoxItem Content="Март"/>
@@ -37,14 +43,14 @@
                 <ComboBoxItem Content="Ноябрь"/>
                 <ComboBoxItem Content="Декабрь"/>
             </ComboBox>
-            <DataGrid x:Name="dataGridAllPlates" IsReadOnly="True" AutoGenerateColumns="False" Width="700"  Height="507" AlternationCount="2" AlternatingRowBackground="Bisque" ItemsSource="{Binding}"  >
+            <DataGrid x:Name="dataGridAllPlates" IsReadOnly="True" AutoGenerateColumns="False" Width="700"  Height="507" AlternationCount="2" AlternatingRowBackground="Bisque" ItemsSource="{Binding}" HorizontalScrollBarVisibility="Hidden"  >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Время" Binding="{Binding Path=_time}" Width="100" />
+                    <DataGridTextColumn Header="Время" Binding="{Binding Path=_time, StringFormat={}{0:dddd dd MMMM HH:mm}, ConverterCulture=ru-RU}" Width="180" />
                     <DataGridTextColumn Header="Блюда" Binding="{Binding Path=_food}" Width="180" />
                     <DataGridTextColumn Header="Белки" Binding="{Binding Path=_proteins}" Width="90" />
                     <DataGridTextColumn Header="Жиры" Binding="{Binding Path=_fats}" Width="90" />
                     <DataGridTextColumn Header="Углеводы" Binding="{Binding Path=_carbohydrates}" Width="90" />
-                    <DataGridTextColumn Header="Калории" Binding="{Binding Path=_call}" Width="90" />
+                    <DataGridTextColumn Header="Cal" Binding="{Binding Path=_call}" Width="90" />
                 </DataGrid.Columns>
                 </DataGrid>
         </StackPanel>

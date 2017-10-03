@@ -29,7 +29,7 @@
             </Button>
             <DataGrid x:Name="dataGridCurrentPlate" IsReadOnly="True" AutoGenerateColumns="False" Width="700"  Height="500" AlternationCount="2" AlternatingRowBackground="Bisque" ItemsSource="{Binding}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Время" Binding="{Binding Path=_time}" Width="100" />
+                    <DataGridTextColumn Header="Время" Binding="{Binding Path=_time, StringFormat=t, ConverterCulture=ru-RU}" Width="100" />
                 <DataGridTextColumn Header="Блюда" Binding="{Binding Path=_food}" Width="180" />
                 <DataGridTextColumn Header="Белки" Binding="{Binding Path=_proteins}" Width="90" />
                 <DataGridTextColumn Header="Жиры" Binding="{Binding Path=_fats}" Width="90" />
