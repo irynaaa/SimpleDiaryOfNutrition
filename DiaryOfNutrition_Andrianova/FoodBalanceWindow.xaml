@@ -1,0 +1,167 @@
+﻿<Window x:Class="DiaryOfNutrition_Andrianova.FoodBalanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
+        mc:Ignorable="d"
+        Title="Сбалансированность выбранных продуктов в %" Height="400" Width="680" Icon="icon.png">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="simple">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="DarkRed"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,2,0,0" ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="230"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Похудение" Margin="-32,16,21,4"  FontWeight="Bold" Foreground="#FFA29F9F">
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="0" Grid.Column="1"  Text="Норма" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" >
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Ваш рез-тат" Margin="22,15,20,19"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.RowSpan="2">
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+
+
+        <TextBlock Grid.Row="0" Grid.Column="3" Text="Похудение" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="2">
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="0" Grid.Column="5"  Text="Норма" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" >
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="0" Grid.Column="5" Text="Ваш рез-тат" Margin="14,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+
+        <TextBlock Grid.Row="0" Grid.Column="7" Text="Похудение" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="2">
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="0" Grid.Column="8"  Text="Норма" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="2" >
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="0" Grid.Column="8"  Text="Ваш рез-тат" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="3" >
+            <TextBlock.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Углеводы" Style="{StaticResource simple}" Margin="0,0,60,5" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBlock Grid.Row="1" Grid.Column="5" Grid.RowSpan="3" Text="Белки" Style="{StaticResource simple}"/>
+        <TextBlock Grid.Row="1" Grid.Column="9" Grid.RowSpan="3" Text="Жиры" Style="{StaticResource simple}"/>
+
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="30-40" Style="{StaticResource simple}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="40-50" Style="{StaticResource simple}"/>
+        <TextBlock Name="TBuserC"  Grid.Row="2" Grid.Column="2" Text="?" Style="{StaticResource simple}"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="40-45" Style="{StaticResource simple}"/>
+        <TextBlock Grid.Row="2" Grid.Column="5" Text="30-40" Style="{StaticResource simple}"/>
+        <TextBlock Name="TBuserP" Grid.Row="2" Grid.Column="6" Text="?" Style="{StaticResource simple}"/>
+        <TextBlock Grid.Row="2" Grid.Column="8" Text="15-20" Style="{StaticResource simple}"/>
+        <TextBlock Grid.Row="2" Grid.Column="9" Text="20-25" Style="{StaticResource simple}"/>
+        <TextBlock Name="TBuserF" Grid.Row="2" Grid.Column="10" Text="?" Style="{StaticResource simple}"/>
+
+        <ProgressBar Grid.Row="3" Grid.Column="0" Minimum="0" 
+                                     Maximum="200" Value="80" 
+                                     Orientation="Vertical" Margin="5,0,5,5" />
+        <ProgressBar Grid.Row="3" Grid.Column="1" Minimum="0" 
+                                     Maximum="200" Value="100" 
+                                     Orientation="Vertical" Margin="5,0,5,5" />
+        <ProgressBar Name="UserC" Grid.Row="3" Grid.Column="2" Minimum="0" 
+                                     Maximum="200" Value="0" 
+                                     Orientation="Vertical" Margin="5,0,5,5" >
+
+        </ProgressBar>
+
+        <ProgressBar Grid.Row="3" Grid.Column="4" Minimum="0" 
+                                     Maximum="200" Value="90" 
+                                     Orientation="Vertical" Margin="5,0,5,5" Foreground="#FF0682B0" />
+        <ProgressBar Grid.Row="3" Grid.Column="5" Minimum="0" 
+                                     Maximum="200" Value="80" 
+                                     Orientation="Vertical" Margin="5,0,5,5" Foreground="#FF0682B0" />
+        <ProgressBar Name="UserProteins" Grid.Row="3" Grid.Column="6" Minimum="0" 
+                                     Maximum="200" Value="0" 
+                                     Orientation="Vertical" Margin="5,0,5,5" Foreground="#FF0682B0" />
+
+        <ProgressBar Grid.Row="3" Grid.Column="8" Minimum="0" 
+                                     Maximum="200" Value="40" 
+                                     Orientation="Vertical" Margin="5,0,5,5" Foreground="#FFF39B00" />
+        <ProgressBar Grid.Row="3" Grid.Column="9" Minimum="0" 
+                                     Maximum="200" Value="50" 
+                                     Orientation="Vertical" Margin="5,0,5,5" Foreground="#FFF39B00" />
+        <ProgressBar Name="UserFats" Grid.Row="3" Grid.Column="10" Minimum="0" 
+                                     Maximum="200" Value="0" 
+                                     Orientation="Vertical" Margin="5,0,5,5" Foreground="#FFF39B00" />
+    </Grid>
+
+</Window>

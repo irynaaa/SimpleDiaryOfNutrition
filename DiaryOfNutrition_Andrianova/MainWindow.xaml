@@ -1,0 +1,178 @@
+﻿<Window x:Class="DiaryOfNutrition_Andrianova.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
+        mc:Ignorable="d"
+        Title="Персональный дневник питания" HorizontalAlignment="Center" Height="570" Width="800" Icon="icon.png">
+    <Window.Resources>
+        <Style x:Key="myTextStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="darkred"/>
+            <Setter Property="FontFamily" Value="Segoe Print"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="Brown"/>
+            <Setter Property="FontFamily" Value="Segoe Print"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <StackPanel.Background>
+            <ImageBrush ImageSource="bg.jpg" Stretch="UniformToFill"/>
+        </StackPanel.Background>
+        <Button x:Name="statistic_btn" Margin="600,0,0,0" Width="151" Height="60" Background="{x:Null}" BorderThickness="0" Click="statistic_btn_Click" >
+        <StackPanel Orientation="Horizontal">
+                <Image Source="statistic_btn.png" />
+        </StackPanel>
+        </Button>
+        <Grid Width="480" Margin="0,0,50,0">
+
+            <Grid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="IsReadOnly" Value="{Binding Path=IsDisplayOnly, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Content="Выберите день:" Style="{StaticResource myTextStyle}"/>
+            <Label HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Content="Продукт:" Style="{StaticResource myTextStyle}"/>
+            <Label HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Content="Вес, г:" Style="{StaticResource myTextStyle}"/>
+            <Label HorizontalAlignment="Stretch" Grid.Row="3" Grid.Column="0" Content="Жиры:" Style="{StaticResource myTextStyle}"/>
+            <Label HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="0" Content="Белки:" Style="{StaticResource myTextStyle}"/>
+            <Label HorizontalAlignment="Stretch" Grid.Row="5" Grid.Column="0" Content="Углеводы:" Style="{StaticResource myTextStyle}"/>
+            <Label HorizontalAlignment="Stretch" Grid.Row="6" Grid.Column="0" Content="Килокалории:" Style="{StaticResource myTextStyle}"/>
+
+            <Button Grid.Row="7" Grid.Column="1" x:Name="buttonAddDish" Content="Добавить в тарелку?" Click="buttonAddDish_Click" Background="#FFC4C3C6" Style="{StaticResource MyButtonStyle}"/>
+            <Button Grid.Row="8" Grid.Column="1" x:Name="buttonShowPlate" Content="Показать календарь питания" Background="#FFDDC4AD" IsDefault="True" Click="buttonShowPlate_Click"  Style="{StaticResource MyButtonStyle}" />
+            <Button Grid.Row="9" Grid.Column="1" x:Name="ShowCurrentDayPlatebutton" Content="Рацион на сегодня (Состав)" Click="ShowCurrentDayPlatebutton_Click" Background="#FFC4C3C6" Style="{StaticResource MyButtonStyle}"/>
+            <Button Grid.Row="10" Grid.Column="1" x:Name="ShowRecommendForTodaybutton" Content="Рекоммендации" Background="#FFDDC4AD" Click="ShowRecommendForTodaybutton_Click" Style="{StaticResource MyButtonStyle}" />
+            <Button Grid.Row="11" Grid.Column="1" x:Name="ShowBalancebutton" Content="Сбалансированность питания" Click="ShowBalancebutton_Click"  Background="#FFC4C3C6" Style="{StaticResource MyButtonStyle}"/>
+
+            <TextBox Name="WeightTextBox"
+                     HorizontalAlignment="Stretch"
+                     Grid.Row="2"
+                     Grid.Column="1" TextChanged="WeightTextBox_TextChanged"
+                     />
+
+            <TextBox Name="FatsTextBox"
+                     HorizontalAlignment="Stretch"
+                     Grid.Row="3"
+                     Grid.Column="1" IsReadOnly="True"
+                     />
+
+            <TextBox Name="ProteinsTextBox"
+                     HorizontalAlignment="Stretch"
+                     Grid.Row="4"
+                     Grid.Column="1" IsReadOnly="True"
+                     />
+
+            <TextBox Name="CarbohydratesTextBox"
+                     HorizontalAlignment="Stretch"
+                     Grid.Row="5"
+                     Grid.Column="1" IsReadOnly="True"
+                     />
+            <TextBox Name="CaloriesTextBox"
+                     HorizontalAlignment="Stretch"
+                     Grid.Row="6"
+                     Grid.Column="1" IsReadOnly="True"
+                     />
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="25" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <DatePicker Grid.Row="0" Grid.Column="0" x:Name="MealTimePicker"   HorizontalAlignment="Left"  VerticalAlignment="Top" SelectedDateFormat="Long" MinWidth="120" SelectedDateChanged="MealTimePicker_SelectedDateChanged" Width="180" Height="26" />
+                    <Label x:Name="label" Grid.Row="0"
+                     Grid.Column="1" Content="Ч."/>
+                    <ComboBox Grid.Row="0" Grid.Column="2" x:Name="comboBoxHour"
+                               SelectedIndex="0" >
+                        <ComboBoxItem Content="0"/>
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                        <ComboBoxItem Content="5"/>
+                        <ComboBoxItem Content="6"/>
+                        <ComboBoxItem Content="7"/>
+                        <ComboBoxItem Content="8"/>
+                        <ComboBoxItem Content="9"/>
+                        <ComboBoxItem Content="10"/>
+                        <ComboBoxItem Content="11"/>
+                        <ComboBoxItem Content="12"/>
+                        <ComboBoxItem Content="13"/>
+                        <ComboBoxItem Content="14"/>
+                        <ComboBoxItem Content="15"/>
+                        <ComboBoxItem Content="16"/>
+                        <ComboBoxItem Content="17"/>
+                        <ComboBoxItem Content="18"/>
+                        <ComboBoxItem Content="19"/>
+                        <ComboBoxItem Content="20"/>
+                        <ComboBoxItem Content="21"/>
+                        <ComboBoxItem Content="22"/>
+                        <ComboBoxItem Content="23"/>
+                    </ComboBox>
+                    <Label x:Name="label2" Grid.Row="0"
+                     Grid.Column="3" Content="Мин." />
+                    <ComboBox Grid.Row="0" 
+                     Grid.Column="4" x:Name="comboBoxMinutes" 
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="0"/>
+                        <ComboBoxItem Content="10"/>
+                        <ComboBoxItem Content="20"/>
+                        <ComboBoxItem Content="30"/>
+                        <ComboBoxItem Content="40"/>
+                        <ComboBoxItem Content="50"/>
+                        <ComboBoxItem Content="60"/>
+                    </ComboBox>
+
+                </Grid>
+            </StackPanel>
+            <ComboBox x:Name="ProductComboBox" Grid.Row="1" Grid.Column="1"
+                     HorizontalAlignment="Left" Height="26"
+                     VerticalAlignment="Top" Width="367"  IsEditable="True" SelectionChanged="ProductComboBox_SelectionChanged" KeyDown="ProductComboBox_KeyDown">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Name="TextBlockFoodName" Text="{Binding Path=FoodName}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+        </Grid>
+
+
+    </StackPanel>
+</Window>

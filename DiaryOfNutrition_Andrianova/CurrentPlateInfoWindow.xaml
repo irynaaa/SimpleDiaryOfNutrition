@@ -1,0 +1,42 @@
+﻿<Window x:Class="DiaryOfNutrition_Andrianova.CurrentPlateInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
+        mc:Ignorable="d"
+        Title="Продукты в вашей тарелке" Height="600" Width="800" Icon="icon.png">
+    <Window.Resources>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource s1}"></Setter>
+        </Style>
+        <Style x:Key="s1" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="LightPink"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="FontFamily" Value="Segoe Print"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+       
+        <StackPanel>
+            <Button x:Name="removeDish_btn" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Width="151" Background="{x:Null}" BorderThickness="0" Click="removeDish_btn_Click">
+            <StackPanel Orientation="Horizontal">
+                    <Image Source="remove_foodinplate_btn.png" />
+            </StackPanel>
+            </Button>
+            <DataGrid x:Name="dataGridCurrentPlate" IsReadOnly="True" AutoGenerateColumns="False" Width="700"  Height="500" AlternationCount="2" AlternatingRowBackground="Bisque" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Время" Binding="{Binding Path=_time}" Width="100" />
+                <DataGridTextColumn Header="Блюда" Binding="{Binding Path=_food}" Width="180" />
+                <DataGridTextColumn Header="Белки" Binding="{Binding Path=_proteins}" Width="90" />
+                <DataGridTextColumn Header="Жиры" Binding="{Binding Path=_fats}" Width="90" />
+                <DataGridTextColumn Header="Углеводы" Binding="{Binding Path=_carbohydrates}" Width="90" />
+                <DataGridTextColumn Header="Калории" Binding="{Binding Path=_call}" Width="90" />
+            </DataGrid.Columns>
+                </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
