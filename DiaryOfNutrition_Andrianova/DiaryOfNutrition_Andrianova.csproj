@@ -150,13 +150,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pictures\icon.png" />
+    <Resource Include="pictures\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pictures\app_background_mw.jpg" />
+    <Resource Include="pictures\app_background_mw.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pictures\bg.jpg" />
+    <Resource Include="pictures\bg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DiaryOfSportsNutrition_Andrianova\DiaryOfSportsNutrition_Andrianova.csproj">
