@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
         mc:Ignorable="d"
-        Title="Подробности и рекоммендации" Height="280" Width="710" Icon="icon.png">
+        Title="Подробности и рекоммендации" Height="280" Width="710" Icon="/pictures/icon.png">
     <Window.Resources>
         <Style x:Key="myTextStyle" TargetType="Label">
             <Setter Property="Foreground" Value="darkred"/>

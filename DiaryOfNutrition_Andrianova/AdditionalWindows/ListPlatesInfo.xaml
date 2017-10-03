@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Календарь питания" Height="592" Width="800" Icon="icon.png">
+        Title="Календарь питания" Height="592" Width="800" Icon="/pictures/icon.png">
     <Window.Resources>
         
         <Style TargetType="DataGrid">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
         mc:Ignorable="d"
-        Title="Продукты в вашей тарелке" Height="600" Width="800" Icon="icon.png">
+        Title="Продукты в вашей тарелке" Height="600" Width="800" Icon="/pictures/icon.png">
     <Window.Resources>
 
         <Style TargetType="DataGrid">

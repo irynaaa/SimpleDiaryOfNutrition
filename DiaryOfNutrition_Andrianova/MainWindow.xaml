@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
         mc:Ignorable="d"
-        Title="Персональный дневник питания" HorizontalAlignment="Center" Height="570" Width="800" Icon="icon.png">
+        Title="Персональный дневник питания" HorizontalAlignment="Center" Height="570" Width="800" Icon="pictures\icon.png">
     <Window.Resources>
         <Style x:Key="myTextStyle" TargetType="Label">
             <Setter Property="Foreground" Value="darkred"/>
@@ -25,11 +25,11 @@
 
     <StackPanel>
         <StackPanel.Background>
-            <ImageBrush ImageSource="bg.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="pictures\bg.jpg" Stretch="UniformToFill"/>
         </StackPanel.Background>
         <Button x:Name="statistic_btn" Margin="600,0,0,0" Width="151" Height="60" Background="{x:Null}" BorderThickness="0" Click="statistic_btn_Click" >
         <StackPanel Orientation="Horizontal">
-                <Image Source="statistic_btn.png" />
+                <Image Source="pictures\statistic_btn.png" />
         </StackPanel>
         </Button>
         <Grid Width="480" Margin="0,0,50,0">

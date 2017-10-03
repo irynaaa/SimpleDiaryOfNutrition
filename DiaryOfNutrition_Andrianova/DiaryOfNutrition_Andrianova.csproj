@@ -68,23 +68,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Statistic.xaml.cs">
+    <Compile Include="AdditionalWindows\Statistic.xaml.cs">
       <DependentUpon>Statistic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <Page Include="CurrentPlateInfoWindow.xaml">
+    <Compile Include="tmpClasses\User.cs" />
+    <Page Include="AdditionalWindows\CurrentPlateInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DetalesAndRecommendationsWindow.xaml">
+    <Page Include="AdditionalWindows\DetalesAndRecommendationsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FoodBalanceWindow.xaml">
+    <Page Include="AdditionalWindows\FoodBalanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListPlatesInfo.xaml">
+    <Page Include="AdditionalWindows\ListPlatesInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,30 +96,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CurrentPlateInfoWindow.xaml.cs">
+    <Compile Include="AdditionalWindows\CurrentPlateInfoWindow.xaml.cs">
       <DependentUpon>CurrentPlateInfoWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DailyManuDetales.cs" />
-    <Compile Include="DetalesAndRecommendationsWindow.xaml.cs">
+    <Compile Include="tmpClasses\DailyManuDetales.cs" />
+    <Compile Include="AdditionalWindows\DetalesAndRecommendationsWindow.xaml.cs">
       <DependentUpon>DetalesAndRecommendationsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FoodBalanceWindow.xaml.cs">
+    <Compile Include="AdditionalWindows\FoodBalanceWindow.xaml.cs">
       <DependentUpon>FoodBalanceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListPlatesInfo.xaml.cs">
+    <Compile Include="AdditionalWindows\ListPlatesInfo.xaml.cs">
       <DependentUpon>ListPlatesInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Statistic.xaml">
+    <Page Include="AdditionalWindows\Statistic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlateItems.cs" />
+    <Compile Include="tmpClasses\PlateItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,13 +150,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.png" />
+    <Resource Include="pictures\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="app_background_mw.jpg" />
+    <Resource Include="pictures\app_background_mw.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bg.jpg" />
+    <Resource Include="pictures\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DiaryOfSportsNutrition_Andrianova\DiaryOfSportsNutrition_Andrianova.csproj">
@@ -165,20 +165,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="statistic_btn.png">
+    <Resource Include="pictures\statistic_btn.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="update_userdata_btn.png">
+    <Resource Include="pictures\update_userdata_btn.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="remove_foodinplate_btn.png">
+    <Resource Include="pictures\remove_foodinplate_btn.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

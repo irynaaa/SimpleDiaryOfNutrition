@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiaryOfNutrition_Andrianova"
         mc:Ignorable="d"
-        Title="Статистика потребляемых продуктов" Height="469" Width="360" Icon="icon.png" Background="#FFE6E3E3">
+        Title="Статистика потребляемых продуктов" Height="469" Width="360" Icon="/pictures/icon.png" Background="#FFE6E3E3">
     <Window.Resources>
 
         <Style TargetType="DataGrid">
