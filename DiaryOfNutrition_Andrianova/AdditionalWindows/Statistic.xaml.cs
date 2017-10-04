@@ -6,16 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DiaryOfSportsNutrition_Andrianova;
 
 namespace DiaryOfNutrition_Andrianova
@@ -61,27 +52,10 @@ namespace DiaryOfNutrition_Andrianova
             IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
             IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 
-            List<Food> products = new List<Food>();
-            List<MyPlate> mypl = new List<MyPlate>();
-            List<PlateFoodRecord> pfr = new List<PlateFoodRecord>();
-            foreach (var u in foodRep.Products())
-            {
-                products.Add(u);
-            }
-            foreach (var u in myplateRep.MyPlates())
-            {
-                mypl.Add(u);
-            }
-
-            foreach (var u in platefoodrecordRepositoryRep.PlateFoodRecords())
-            {
-                pfr.Add(u);
-            }
-
             var ShowProducts =
-            from mpl in mypl
-            join r in pfr on mpl.Id equals r.PlateId
-            join p in products on r.FoodId equals p.Id
+            from mpl in myplateRep.MyPlates().AsEnumerable()
+            join r in platefoodrecordRepositoryRep.PlateFoodRecords().AsEnumerable() on mpl.Id equals r.PlateId
+            join p in foodRep.Products().AsEnumerable() on r.FoodId equals p.Id
             where mpl.mealtime.Date >= t.Value.Date && mpl.mealtime.Date <= d.Value.Date
             select new
             {

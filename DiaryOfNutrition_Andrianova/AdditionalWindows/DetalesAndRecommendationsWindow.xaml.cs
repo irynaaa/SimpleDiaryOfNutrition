@@ -7,16 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DiaryOfNutrition_Andrianova
 {
@@ -64,27 +55,10 @@ namespace DiaryOfNutrition_Andrianova
             IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
             IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 
-            List<Food> products = new List<Food>();
-            List<MyPlate> mypl = new List<MyPlate>();
-            List<PlateFoodRecord> pfr = new List<PlateFoodRecord>();
-            foreach (var u in foodRep.Products())
-            {
-                products.Add(u);
-            }
-            foreach (var u in myplateRep.MyPlates())
-            {
-                mypl.Add(u);
-            }
-
-            foreach (var u in platefoodrecordRepositoryRep.PlateFoodRecords())
-            {
-                pfr.Add(u);
-            }
-
             var ShowProducts =
-            from mpl in mypl
-            join r in pfr on mpl.Id equals r.PlateId
-            join p in products on r.FoodId equals p.Id
+            from mpl in myplateRep.MyPlates().AsEnumerable()
+            join r in platefoodrecordRepositoryRep.PlateFoodRecords().AsEnumerable() on mpl.Id equals r.PlateId
+            join p in foodRep.Products().AsEnumerable() on r.FoodId equals p.Id
             where mpl.mealtime.Day == t.Value.Day && mpl.mealtime.Month == t.Value.Month
             select new
             {
@@ -103,8 +77,6 @@ namespace DiaryOfNutrition_Andrianova
                     carbohydrates += p.carbohydrates;
                     ccal += p.call;
                 }
-
-            
             
             _items.Add(new DailyManuDetales { Title ="Белки", Completion= proteins, MinValue = 58, MaxValue =87, tooltip= "Рекоммендуемая суточная норма 58..87г. В вашем меню "+proteins.ToString()+" г", Color= "Green" });
             _items.Add(new DailyManuDetales { Title = "Жиры", Completion = fats, MinValue = 60, MaxValue = 102, tooltip = "Рекоммендуемая суточная норма 60..102г. В вашем меню " + fats.ToString() + " г", Color = "Green" });
@@ -123,7 +95,6 @@ namespace DiaryOfNutrition_Andrianova
             {
                 _items[0].tooltip += "\nНеобходимо повысить потребление белков!";
             }
-
 
 
             if (fats >= 60&&fats <= 102)

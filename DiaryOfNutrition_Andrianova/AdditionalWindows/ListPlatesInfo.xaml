@@ -32,15 +32,15 @@
                 </ComboBox.Background>
                 <ComboBoxItem Content="Январь"/>
                 <ComboBoxItem Content="Февраль"/>
-                <ComboBoxItem Content="Март"/>
-                <ComboBoxItem Content="Апрель"/>
-                <ComboBoxItem Content="Май"/>
-                <ComboBoxItem Content="Июнь"/>
-                <ComboBoxItem Content="Июль"/>
-                <ComboBoxItem Content="Август"/>
-                <ComboBoxItem Content="Сентябрь"/>
-                <ComboBoxItem Content="Октябрь"/>
-                <ComboBoxItem Content="Ноябрь"/>
+                <ComboBoxItem Content="Март" Foreground="Green"/>
+                <ComboBoxItem Content="Апрель" Foreground="Green"/>
+                <ComboBoxItem Content="Май" Foreground="Green"/>
+                <ComboBoxItem Content="Июнь" Foreground="Orange"/>
+                <ComboBoxItem Content="Июль" Foreground="Orange"/>
+                <ComboBoxItem Content="Август" Foreground="Orange"/>
+                <ComboBoxItem Content="Сентябрь" Foreground="Brown"/>
+                <ComboBoxItem Content="Октябрь" Foreground="Brown"/>
+                <ComboBoxItem Content="Ноябрь" Foreground="Brown"/>
                 <ComboBoxItem Content="Декабрь"/>
             </ComboBox>
             <DataGrid x:Name="dataGridAllPlates" IsReadOnly="True" AutoGenerateColumns="False" Width="700"  Height="507" AlternationCount="2" AlternatingRowBackground="Bisque" ItemsSource="{Binding}" HorizontalScrollBarVisibility="Hidden"  >

@@ -1,23 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DiaryOfSportsNutrition_Andrianova;
-using System.Data.Entity;
-using System.Collections.ObjectModel;
 using System.Collections;
 using System.Data.SqlTypes;
-using System.IO;
 using Autofac;
 using DiaryOfSportsNutrition_Andrianova.Entity;
 using DiaryOfSportsNutrition_Andrianova.Abstract;
@@ -28,8 +17,8 @@ namespace DiaryOfNutrition_Andrianova
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-   
-   public partial class MainWindow : Window
+
+    public partial class MainWindow : Window
     {
         private static IContainer Container { get; set; }
 
@@ -129,12 +118,10 @@ namespace DiaryOfNutrition_Andrianova
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<EFContext>().As<IEFContext>();
-            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
             builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
             builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
             Container = builder.Build();
 
-            IFoodRepository foodRep = Container.Resolve<IFoodRepository>();
             IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
             IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 

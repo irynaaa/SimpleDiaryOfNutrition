@@ -50,7 +50,7 @@
             </TextBlock.LayoutTransform>
         </TextBlock>
 
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Ваш рез-тат" Margin="22,15,20,19"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.RowSpan="2">
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Ваш рез-тат" Margin="22,15,20,19"  FontWeight="Bold" Foreground="#FF04B814" Grid.RowSpan="2">
             <TextBlock.LayoutTransform>
                 <TransformGroup>
                     <RotateTransform Angle="90"/>
@@ -79,7 +79,7 @@
             </TextBlock.LayoutTransform>
         </TextBlock>
 
-        <TextBlock Grid.Row="0" Grid.Column="5" Text="Ваш рез-тат" Margin="14,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <TextBlock Grid.Row="0" Grid.Column="5" Text="Ваш рез-тат" Margin="14,17,21,3"  FontWeight="Bold" Foreground="#FF04B814" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <TextBlock.LayoutTransform>
                 <TransformGroup>
                     <RotateTransform Angle="90"/>
@@ -107,7 +107,7 @@
             </TextBlock.LayoutTransform>
         </TextBlock>
 
-        <TextBlock Grid.Row="0" Grid.Column="8"  Text="Ваш рез-тат" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FFA29F9F" Grid.ColumnSpan="3" >
+        <TextBlock Grid.Row="0" Grid.Column="8"  Text="Ваш рез-тат" Margin="28,17,21,3"  FontWeight="Bold" Foreground="#FF04B814" Grid.ColumnSpan="3" >
             <TextBlock.LayoutTransform>
                 <TransformGroup>
                     <RotateTransform Angle="90"/>
