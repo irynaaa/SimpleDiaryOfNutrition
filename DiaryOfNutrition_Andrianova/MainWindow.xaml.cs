@@ -11,6 +11,7 @@ using Autofac;
 using DiaryOfSportsNutrition_Andrianova.Entity;
 using DiaryOfSportsNutrition_Andrianova.Abstract;
 using DiaryOfSportsNutrition_Andrianova.Concrete;
+using System.Net;
 
 namespace DiaryOfNutrition_Andrianova
 {
@@ -33,10 +34,36 @@ namespace DiaryOfNutrition_Andrianova
             get { return System.IO.Path.GetFullPath("Resources/icon.png"); }
         }
         
+        bool checkNet()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    using (client.OpenRead("http://clients3.google.com/generate_204"))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
 
+           if(checkNet()==true)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Невозможно открыть программу! Отсутствует подключение к сети Интернет отсутствует. ");
+                System.Windows.Application.Current.Shutdown();
+            }
             ProductComboBox.ItemsSource = GetData();
             List<Food> list = GetData();
             foreach (var p in list)
@@ -262,5 +289,29 @@ namespace DiaryOfNutrition_Andrianova
             }
         }
 
+        private void WeightTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                try
+                {
+                    int parsed = -1;
+                    int.TryParse(WeightTextBox.Text, out parsed);
+                    buttonAddDish_Click(sender,null);
+                    e.Handled = true;
+                    return;
+                }
+                catch (NullReferenceException)
+                {
+                    MessageBox.Show("Не указан вес!");
+                   
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

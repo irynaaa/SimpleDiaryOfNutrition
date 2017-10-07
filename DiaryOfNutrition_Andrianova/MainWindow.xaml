@@ -74,7 +74,7 @@
             <TextBox Name="WeightTextBox"
                      HorizontalAlignment="Stretch"
                      Grid.Row="2"
-                     Grid.Column="1"
+                     Grid.Column="1" KeyDown="WeightTextBox_KeyDown"
                      />
 
             <TextBox Name="FatsTextBox"
