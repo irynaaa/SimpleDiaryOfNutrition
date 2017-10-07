@@ -57,18 +57,18 @@ namespace DiaryOfNutrition_Andrianova
 
            if(checkNet()==true)
             {
-
+                ProductComboBox.ItemsSource = GetData();
+                List<Food> list = GetData();
+                foreach (var p in list)
+                { foodlist.Add(p); }
+                MealTimePicker.SelectedDate = DateTime.Now;
             }
             else
             {
-                MessageBox.Show("Невозможно открыть программу! Отсутствует подключение к сети Интернет отсутствует. ");
+                MessageBox.Show("Невозможно открыть программу! Отсутствует подключение к сети Интернет!");
                 System.Windows.Application.Current.Shutdown();
             }
-            ProductComboBox.ItemsSource = GetData();
-            List<Food> list = GetData();
-            foreach (var p in list)
-            { foodlist.Add(p); }
-            MealTimePicker.SelectedDate = DateTime.Now;
+            
 
         }
 
