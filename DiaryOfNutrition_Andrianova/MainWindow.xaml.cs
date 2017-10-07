@@ -20,13 +20,14 @@ namespace DiaryOfNutrition_Andrianova
 
     public partial class MainWindow : Window
     {
+
         private static IContainer Container { get; set; }
 
         public IList<MyPlate> plates = new List<MyPlate>();
         public int plateID = 1;
         public bool new_plate = false;
         List<PlateItems> items = new List<PlateItems>();
-
+        List<Food> foodlist = new List<Food>();
         public string SourceUri
         {
             get { return System.IO.Path.GetFullPath("Resources/icon.png"); }
@@ -37,13 +38,18 @@ namespace DiaryOfNutrition_Andrianova
             InitializeComponent();
 
             ProductComboBox.ItemsSource = GetData();
+            List<Food> list = GetData();
+            foreach (var p in list)
+            { foodlist.Add(p); }
             MealTimePicker.SelectedDate = DateTime.Now;
 
         }
 
-        private ArrayList GetData()
+        
+
+        private List<Food> GetData()
         {
-            ArrayList data = new ArrayList();
+            List<Food> data = new List<Food>();
 
             var builder = new ContainerBuilder();
             builder.RegisterType<EFContext>().As<IEFContext>();
@@ -72,47 +78,27 @@ namespace DiaryOfNutrition_Andrianova
             {
                 return;
             }
+
             f = SelectedItem(ProductComboBox.SelectedValue.ToString());
+
             FatsTextBox.Text = f.Fat.ToString();
             ProteinsTextBox.Text = f.Proteins.ToString();
             CarbohydratesTextBox.Text = f.Carbohydrates.ToString();
             CaloriesTextBox.Text = f.CaloricValue.ToString();
         }
 
-        static Food SelectedItem(string foodName)
+        private Food SelectedItem(string foodName)
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterType<EFContext>().As<IEFContext>();
-            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
-            
-            Container = builder.Build();
 
-            IFoodRepository foodRep = Container.Resolve<IFoodRepository>();
             if (foodName == null) return null;
-            
-                Food food = new Food();
-                var prod = foodRep.Products();
-                var result = from c in prod
-                             where c.FoodName == foodName
-                             select c;
-                foreach (var f in result)
-                {
-                    food.Id = f.Id;
-                    food.FoodName=f.FoodName;
-                    food.Proteins = f.Proteins;
-                    food.Fat = f.Fat;
-                    food.Carbohydrates = f.Carbohydrates;
-                    food.CaloricValue = f.CaloricValue;
-                }
-                return food;
+
+            Food food = new Food();
+
+            food = foodlist.Find(p => p.FoodName.Contains(foodName));
+            return food;
         }
 
-       
 
-        private void WeightTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
 
         private void buttonAddDish_Click(object sender, RoutedEventArgs e)
         {
@@ -142,7 +128,20 @@ namespace DiaryOfNutrition_Andrianova
                 MessageBox.Show("Блюдо и его вес должны быть указаны обязательно!");
                 return;
             }
-                    int h = 0;
+            else
+            {
+                int parsed = -1;
+                if (int.TryParse(WeightTextBox.Text, out parsed) == true)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("Некорректно введены данные!");
+                    return;
+                }
+            }
+            int h = 0;
                     int m = 0;
                     int s = 0;
             try
@@ -165,30 +164,6 @@ namespace DiaryOfNutrition_Andrianova
             MessageBox.Show("Блюдо в тарелке!");
         }
 
-        private void MealTimePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-        }
-
-        private void ProductComboBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            ComboBox cb = (ComboBox)sender;
-            cb.IsEditable = true;
-            
-            try { 
-           if(cb.SelectedValue.ToString()==null||SelectedItem(cb.SelectedValue.ToString())==null)
-            {
-                cb.IsEditable = false;
-                cb.SelectedItem = "";
-                ProductComboBox.SelectedIndex = -1;
-                return;
-            }
-            }
-            catch(NullReferenceException)
-            {
-                return;
-            }
-        }
 
         private void buttonShowPlate_Click(object sender, RoutedEventArgs e)
         {
@@ -260,5 +235,32 @@ namespace DiaryOfNutrition_Andrianova
             Statistic statW = new Statistic(week, month);
             statW.Show();
         }
+
+      
+
+        private void ProductComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                try { 
+                    foodlist.Where(p => p.FoodName.Contains(ProductComboBox.SelectedValue.ToString())).ToList();
+                    WeightTextBox.Focus();
+                    e.Handled = true;
+                    return;
+                }
+                catch(NullReferenceException)
+                {
+                    MessageBox.Show("Продукт не найден!");
+                    ProductComboBox.SelectedValue = null;
+                    e.Handled = true;
+                    return;
+                }
+                }
+            else
+            {
+                return;
+            }
+        }
+
     }
 }

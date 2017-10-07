@@ -146,7 +146,14 @@ namespace DiaryOfNutrition_Andrianova
 
         private void GetNormaCcal_Click(object sender, RoutedEventArgs e)
         {
-            if (float.Parse(YourHeightTextBox.Text)==0|| float.Parse(YourWeightTextBox.Text)==0|| float.Parse(YourAgeTextBox.Text)==0)/*user._Age==0||user._Height==0 || user._Weight==0 || DetalesOfDailyMenuList.Visibility == Visibility.Collapsed)*/
+            int parsed = -1;
+            if (int.TryParse(YourHeightTextBox.Text, out parsed) == false|| int.TryParse(YourWeightTextBox.Text, out parsed) == false || int.TryParse(YourAgeTextBox.Text, out parsed) == false)
+            {
+                MessageBox.Show("Некорректно введены данные!");
+                return;
+            }
+
+            if (float.Parse(YourHeightTextBox.Text)==0|| float.Parse(YourWeightTextBox.Text)==0|| float.Parse(YourAgeTextBox.Text)==0)
             {
                 MessageBox.Show("Введите данные!");
 

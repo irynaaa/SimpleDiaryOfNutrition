@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryOfSportsNutrition_Andr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryOfNutrition_Andrianova", "DiaryOfNutrition_Andrianova\DiaryOfNutrition_Andrianova.csproj", "{2AB4D0EA-89AB-4CB9-B7E1-344DE337DEA5}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "SetupWizard\Setup\Setup.vdproj", "{70E062E6-624C-483E-80E2-FBEFE6EC263F}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "SetupWizard\Setup\Setup.vdproj", "{3C2AFEC9-9E6A-4864-9D08-51673FCB06FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +23,8 @@ Global
 		{2AB4D0EA-89AB-4CB9-B7E1-344DE337DEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AB4D0EA-89AB-4CB9-B7E1-344DE337DEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AB4D0EA-89AB-4CB9-B7E1-344DE337DEA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70E062E6-624C-483E-80E2-FBEFE6EC263F}.Debug|Any CPU.ActiveCfg = Debug
-		{70E062E6-624C-483E-80E2-FBEFE6EC263F}.Release|Any CPU.ActiveCfg = Release
+		{3C2AFEC9-9E6A-4864-9D08-51673FCB06FA}.Debug|Any CPU.ActiveCfg = Debug
+		{3C2AFEC9-9E6A-4864-9D08-51673FCB06FA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

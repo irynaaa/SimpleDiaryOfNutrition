@@ -74,7 +74,7 @@
             <TextBox Name="WeightTextBox"
                      HorizontalAlignment="Stretch"
                      Grid.Row="2"
-                     Grid.Column="1" TextChanged="WeightTextBox_TextChanged"
+                     Grid.Column="1"
                      />
 
             <TextBox Name="FatsTextBox"
@@ -113,7 +113,7 @@
                         <ColumnDefinition Width="35"/>
                         <ColumnDefinition Width="50"/>
                     </Grid.ColumnDefinitions>
-                    <DatePicker Grid.Row="0" Grid.Column="0" x:Name="MealTimePicker"   HorizontalAlignment="Left"  VerticalAlignment="Top" SelectedDateFormat="Long" MinWidth="120" SelectedDateChanged="MealTimePicker_SelectedDateChanged" Width="180" Height="26" />
+                    <DatePicker Grid.Row="0" Grid.Column="0" x:Name="MealTimePicker"   HorizontalAlignment="Left"  VerticalAlignment="Top" SelectedDateFormat="Long" MinWidth="120"  Width="180" Height="26" />
                     <Label x:Name="label" Grid.Row="0"
                      Grid.Column="1" Content="Ч."/>
                     <ComboBox Grid.Row="0" Grid.Column="2" x:Name="comboBoxHour"
@@ -161,7 +161,11 @@
             </StackPanel>
             <ComboBox x:Name="ProductComboBox" Grid.Row="1" Grid.Column="1"
                      HorizontalAlignment="Left" Height="26"
-                     VerticalAlignment="Top" Width="367"  IsEditable="True" SelectionChanged="ProductComboBox_SelectionChanged" KeyDown="ProductComboBox_KeyDown">
+                     VerticalAlignment="Top" Width="367"  
+                     IsEditable="True" 
+                     SelectionChanged="ProductComboBox_SelectionChanged" KeyDown="ProductComboBox_KeyDown" 
+                      
+                    >
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
