@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Globalization;
 
 namespace DiaryOfNutrition_Andrianova
 {
@@ -25,16 +26,16 @@ namespace DiaryOfNutrition_Andrianova
         public ListPlatesInfo()
         {
             InitializeComponent();
-            int mnth = DateTime.Parse("1." + DateTime.Now.Month + " "+DateTime.Now.Year).Month;
-            comboBoxMonth.SelectedIndex = mnth-1;
+           
             month = new SqlDateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            comboBoxMonth.SelectedIndex = month.Value.Month-1;
             showProdInPlate(month);
         }
 
         private void showProdInPlate(SqlDateTime t)
         {
             List<PlateItems> items_ = new List<PlateItems>();
-            
+           
             var builder = new ContainerBuilder();
             builder.RegisterType<EFContext>().As<IEFContext>();
             builder.RegisterType<FoodRepository>().As<IFoodRepository>();
@@ -72,9 +73,28 @@ namespace DiaryOfNutrition_Andrianova
 
         private void comboBoxMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int _month = DateTime.Parse("1." + comboBoxMonth.SelectedValue.ToString().Split(':')[1] +" " + DateTime.Now.Year).Month;
-            month = new SqlDateTime(DateTime.Now.Year, _month, DateTime.Now.Day);
-            showProdInPlate(month);
+           // CultureInfo cru = new CultureInfo("ru-RU");
+            //CultureInfo cinv = CultureInfo.InvariantCulture;
+            string strdata= "";
+            CultureInfo ci = CultureInfo.InstalledUICulture;
+            DateTime userdate = DateTime.Now;
+            userdate = new DateTime(DateTime.Now.Year, (comboBoxMonth.SelectedIndex + 1),DateTime.Now.Day);
+            strdata=userdate.ToString("d", ci);
+            showProdInPlate(ConvertToDateTime(strdata));
+        }
+        private static DateTime ConvertToDateTime(string value)
+        {
+            DateTime convertedDate=DateTime.Now;
+           
+
+            try
+            {
+                convertedDate = Convert.ToDateTime(value);
+            }
+            catch (FormatException)
+            {
+            }
+            return convertedDate;
         }
     }
 
