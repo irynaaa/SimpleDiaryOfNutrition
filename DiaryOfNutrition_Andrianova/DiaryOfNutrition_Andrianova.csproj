@@ -168,9 +168,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DiaryOfSportsNutrition_Andrianova\DiaryOfSportsNutrition_Andrianova.csproj">
+    <ProjectReference Include="..\DiaryOfSportsNutrition_Andrianova\DAL.csproj">
       <Project>{be6ac167-fdd2-42c8-beb1-27638fedf29a}</Project>
-      <Name>DiaryOfSportsNutrition_Andrianova</Name>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

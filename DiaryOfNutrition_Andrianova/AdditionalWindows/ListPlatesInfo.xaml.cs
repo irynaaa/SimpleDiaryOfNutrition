@@ -89,7 +89,7 @@ namespace DiaryOfNutrition_Andrianova
 
             try
             {
-                convertedDate = Convert.ToDateTime(value);
+                convertedDate = Convert.ToDateTime(value, CultureInfo.InstalledUICulture);
             }
             catch (FormatException)
             {
