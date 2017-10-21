@@ -21,7 +21,6 @@ namespace DiaryOfNutrition_Andrianova
 
     public partial class MainWindow : Window
     {
-
         private static IContainer Container { get; set; }
 
         public IList<MyPlate> plates = new List<MyPlate>();
@@ -51,11 +50,30 @@ namespace DiaryOfNutrition_Andrianova
                 return false;
             }
         }
+
+        public IFoodRepository foodRep;
+        public IMyPlateRepository myplateRep;
+        public IPlateFoodRecordRepository platefoodrecordRepositoryRep;
+        public ContainerBuilder builder;
+
         public MainWindow()
         {
             InitializeComponent();
 
-           if(checkNet()==true)
+            builder = new ContainerBuilder();
+            builder.RegisterModule(new DataModule("ExamDiaryDB_AndrianovaConnectionString"));
+
+            builder.RegisterType<EFContext>().As<IEFContext>();
+            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
+            builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
+            builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
+            Container = builder.Build();
+
+            foodRep = Container.Resolve<IFoodRepository>();
+            myplateRep = Container.Resolve<IMyPlateRepository>();
+            platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
+
+            if (checkNet()==true)
             {
                 ProductComboBox.ItemsSource = GetData();
                 List<Food> list = GetData();
@@ -68,22 +86,12 @@ namespace DiaryOfNutrition_Andrianova
                 MessageBox.Show("Невозможно открыть программу! Отсутствует подключение к сети Интернет!");
                 System.Windows.Application.Current.Shutdown();
             }
-            
-
         }
-
         
-
         private List<Food> GetData()
         {
             List<Food> data = new List<Food>();
 
-            var builder = new ContainerBuilder();
-            builder.RegisterType<EFContext>().As<IEFContext>();
-            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
-            Container = builder.Build();
-
-            IFoodRepository foodRep = Container.Resolve<IFoodRepository>();
             foreach (var u in foodRep.Products())
             {
                 data.Add(u);
@@ -129,14 +137,6 @@ namespace DiaryOfNutrition_Andrianova
 
         private void buttonAddDish_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterType<EFContext>().As<IEFContext>();
-            builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
-            builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
-            Container = builder.Build();
-
-            IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
-            IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 
             Food f = new Food();
             MyPlate mp = new MyPlate();

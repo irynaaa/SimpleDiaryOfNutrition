@@ -17,30 +17,36 @@ namespace DiaryOfNutrition_Andrianova
     {
         public List<PlateItems> items_ = new List<PlateItems>();
         private static IContainer Container { get; set; }
+
+        public IFoodRepository foodRep;
+        public IMyPlateRepository myplateRep;
+        public IPlateFoodRecordRepository platefoodrecordRepositoryRep;
+        public ContainerBuilder builder;
+
         public CurrentPlateInfoWindow(SqlDateTime t)
         {
             InitializeComponent();
-
-            showProdInPlate_(t);
-
-        }
-        private void showProdInPlate_(SqlDateTime t)
-        {
             
-            dataGridCurrentPlate.Items.Clear();
 
-            var builder = new ContainerBuilder();
+            builder = new ContainerBuilder();
+            builder.RegisterModule(new DataModule("ExamDiaryDB_AndrianovaConnectionString"));
+
             builder.RegisterType<EFContext>().As<IEFContext>();
             builder.RegisterType<FoodRepository>().As<IFoodRepository>();
             builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
             builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
             Container = builder.Build();
 
-            IFoodRepository foodRep = Container.Resolve<IFoodRepository>();
-            IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
-            IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
+            foodRep = Container.Resolve<IFoodRepository>();
+            myplateRep = Container.Resolve<IMyPlateRepository>();
+            platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 
-             var ShowProducts =
+            showProdInPlate_(t);
+
+        }
+        private void showProdInPlate_(SqlDateTime t)
+        {
+            var ShowProducts =
              from mpl in myplateRep.MyPlates().AsEnumerable()
              join r in platefoodrecordRepositoryRep.PlateFoodRecords().AsEnumerable() on mpl.Id equals r.PlateId
              join p in foodRep.Products().AsEnumerable() on r.FoodId equals p.Id
@@ -66,16 +72,6 @@ namespace DiaryOfNutrition_Andrianova
         //remove the selectedItem from the collection source
         private void removeDish_btn_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterType<EFContext>().As<IEFContext>();
-            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
-            builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
-            builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
-            Container = builder.Build();
-
-            IFoodRepository foodRep = Container.Resolve<IFoodRepository>();
-            IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
-            IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 
             if (dataGridCurrentPlate.SelectedIndex >= 0)
             {

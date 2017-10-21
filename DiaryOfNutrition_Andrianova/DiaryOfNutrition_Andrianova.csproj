@@ -74,6 +74,7 @@
     <Compile Include="AdditionalWindows\Statistic.xaml.cs">
       <DependentUpon>Statistic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModule.cs" />
     <Compile Include="tmpClasses\User.cs" />
     <Page Include="AdditionalWindows\CurrentPlateInfoWindow.xaml">
       <SubType>Designer</SubType>

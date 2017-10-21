@@ -17,11 +17,31 @@ namespace DiaryOfNutrition_Andrianova
     public partial class FoodBalanceWindow : Window
     {
         private static IContainer Container { get; set; }
+
+        public IFoodRepository foodRep;
+        public IMyPlateRepository myplateRep;
+        public IPlateFoodRecordRepository platefoodrecordRepositoryRep;
+        public ContainerBuilder builder;
+
         List<DailyManuDetales> _items = new List<DailyManuDetales>();
 
         public FoodBalanceWindow(SqlDateTime t)
         {
             InitializeComponent();
+
+            builder = new ContainerBuilder();
+            builder.RegisterModule(new DataModule("ExamDiaryDB_AndrianovaConnectionString"));
+
+            builder.RegisterType<EFContext>().As<IEFContext>();
+            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
+            builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
+            builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
+            Container = builder.Build();
+
+            foodRep = Container.Resolve<IFoodRepository>();
+            myplateRep = Container.Resolve<IMyPlateRepository>();
+            platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
+
             showProdInPlate_(t);
         }
         private void showProdInPlate_(SqlDateTime t)
@@ -31,17 +51,6 @@ namespace DiaryOfNutrition_Andrianova
             float carbohydrates = 0;
             float ccal = 0;
             float totalWeight = 0;
-
-            var builder = new ContainerBuilder();
-            builder.RegisterType<EFContext>().As<IEFContext>();
-            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
-            builder.RegisterType<MyPlateRepository>().As<IMyPlateRepository>();
-            builder.RegisterType<PlateFoodRecordRepository>().As<IPlateFoodRecordRepository>();
-            Container = builder.Build();
-
-            IFoodRepository foodRep = Container.Resolve<IFoodRepository>();
-            IMyPlateRepository myplateRep = Container.Resolve<IMyPlateRepository>();
-            IPlateFoodRecordRepository platefoodrecordRepositoryRep = Container.Resolve<IPlateFoodRecordRepository>();
 
             var ShowProducts =
             from mpl in myplateRep.MyPlates().AsEnumerable()
